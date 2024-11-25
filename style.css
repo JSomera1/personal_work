@@ -148,7 +148,6 @@ progress::-webkit-progress-bar {
     display:flex;
     flex-direction: column;
     justify-content: center;
-    display:none;
 }
 
 #characteroptions{
