@@ -24,8 +24,6 @@ function next(){
 //count moves
 let moves = 0;
 
-//added damage 
-var added = Math.floor(Math.random * 5) + 1
 
 //character chosing function
 var playerCharacter = ''
@@ -67,6 +65,8 @@ function jorge_player(){
     person.heal = person.heal/2
 }
 function khoi_player(){
+    player.health = 200
+    player.maxHealth = 200
     person.attack = person.attack/3
     person.heal = person.heal * 5
 }
@@ -86,6 +86,8 @@ function jorge_enemy(){
     enemy.heal = enemy.heal/2
 }
 function khoi_enemy(){
+    enemy.health = 200
+    enemy.maxHealth = 200
     enemy.attack = enemy.attack/3
     enemy.heal = enemy.heal * 5
 }
@@ -154,7 +156,7 @@ function showInConsole(){
     console.log(enemyhealth + 'enemy')
 }
 function pdamage(){
-    person.health = person.health - (enemy.attack + added)
+    person.health = person.health - (enemy.attack )
     playerhealth = person.health
     //health is whole number
     if (person.health%2 != 0) {
@@ -201,7 +203,7 @@ function pheal(){
     
 };
 function pdefend(){
-    person.health = person.health - 4.5*((enemy.attack + added)/(person.defence/2))
+    person.health = person.health - 4.5*((enemy.attack)/(person.defence/2))
     //health is whole number
     if (person.health%2 != 0) {
         if (person.health%2 >= .5){
@@ -232,7 +234,7 @@ function forfeit(){
     // console.log(person.health)
 }
 function edamage(){
-    enemy.health = enemy.health - (person.attack + added)
+    enemy.health = enemy.health - (person.attack )
     enemyhealth = enemy.health
     if (enemy.health%2 >= .5){
         //rounds up
@@ -271,7 +273,7 @@ function eheal(){
     // console.log(enemy.health)
 };
 function edefend(){
-    enemy.health = enemy.health - 4.5*((person.attack + added)/(enemy.defence/2))
+    enemy.health = enemy.health - 4.5*((person.attack )/(enemy.defence/2))
     enemyhealth = enemy.health
     //health is whole number
     if (enemy.health%2 != 0) {
@@ -310,10 +312,10 @@ function hide(){
     result.style.display = 'block'
 }
 function sethealth(){
-    document.getElementById("healthplayer").value = person.health
+    document.getElementById("healthplayer").value = person.health;
     document.getElementById('phealth_count').innerHTML = person.health + "/" + person.maxHealth
     document.getElementById('healthplayer').max = person.maxHealth
-    document.getElementById("healthenemy").value = enemy.health
+    document.getElementById("healthenemy").value = enemy.health;
     document.getElementById('ehealth_count').innerHTML = enemy.health + "/" + enemy.maxHealth
     document.getElementById("healthenemy").max = enemy.maxHealth;
 
