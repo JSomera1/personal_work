@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="menubar" id="menubar">
+        <button id="attack" class="action">attack</button>
+        <button id="heal" class="action">heal</button>
+        <button id="defend" class="action">defend</button>
+        <button id="forfeit" class="action">forfeit</button>
+    </div>
+    <div id="moves" class="count">moves done:</div>
+    <main class="halfbody">
+        <div class="player_side">
+            <div id="player" class="container">
+                <div>
+                    <pre id="phealth_count">250/250</pre>
+                    <progress class="health" id="healthplayer" value="250" max="250" ></progress>
+                    <div id="playercharacter" class="characterName">
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="enemy_side">
+            <div id="enemy" class="container">
+                <div>
+                    <pre id="ehealth_count">250/250</pre>
+                    <progress class="health" id="healthenemy" value="250" max="250" ></progress>
+                    <div id="enemycharacter" class="characterName">
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div id="result">test</div>
+    </main>
+    <div id="coverup">
+        
+        <div id="characteroptions">
+            <div>
+                <h1>choose a character</h1>
+            </div>
+            <div class="characters">
+                <button id="Jorge">Jorge</button>
+                <button id="Alex">Alex</button>
+                <button id="Khoi">Khoi</button>
+                <button id="Jian">Jian</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
