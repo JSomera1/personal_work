@@ -23,6 +23,10 @@ function next(){
 }
 //count moves
 let moves = 0;
+
+//added damage 
+var added = Math.floor(Math.random * 5) + 1
+
 //character chosing function
 var playerCharacter = ''
 var computerCharacter = ''
@@ -57,9 +61,9 @@ function alex_player(){
     person.heal = 0 
 }
 function jorge_player(){
-    person.sethealth = 200
-    person.maxHealth = 200
-    person.attack = person.attack*2
+    person.health = 100
+    person.maxHealth = 100
+    person.attack = person.attack*1.5
     person.heal = person.heal/2
 }
 function khoi_player(){
@@ -76,8 +80,8 @@ function alex_enemy(){
     enemy.heal = 0 
 }
 function jorge_enemy(){
-    enemy.sethealth = 200
-    enemy.maxHealth = 200
+    enemy.health = 100
+    enemy.maxHealth = 100
     enemy.attack = enemy.attack*2
     enemy.heal = enemy.heal/2
 }
@@ -150,12 +154,29 @@ function showInConsole(){
     console.log(enemyhealth + 'enemy')
 }
 function pdamage(){
-    person.health = person.health - enemy.attack
+    person.health = person.health - (enemy.attack + added)
     playerhealth = person.health
-    if (person.health <= 0){
-        person.health = 0
-        playerhealth = person.health
-        person.canHeal = false
+    //health is whole number
+    if (person.health%2 != 0) {
+        if (person.health%2 >= .5){
+            //rounds up
+            person.health = (person.health - person.health%2) + 1
+            playerhealth = person.health
+            if (person.health <= 0){
+                person.health = 0
+                playerhealth = person.health
+                person.canHeal = false
+            }
+        }
+        else{
+            person.health = (person.health - person.health%2)
+            playerhealth = person.health
+            if (person.health <= 0){
+                person.health = 0
+                playerhealth = person.health
+                person.canHeal = false
+            }
+        }
     }
 };
 function pheal(){
@@ -180,7 +201,7 @@ function pheal(){
     
 };
 function pdefend(){
-    person.health = person.health - 4.5*(enemy.attack/(person.defence/2))
+    person.health = person.health - 4.5*((enemy.attack + added)/(person.defence/2))
     //health is whole number
     if (person.health%2 != 0) {
         if (person.health%2 >= .5){
@@ -211,12 +232,26 @@ function forfeit(){
     // console.log(person.health)
 }
 function edamage(){
-    enemy.health = enemy.health - person.attack
+    enemy.health = enemy.health - (person.attack + added)
     enemyhealth = enemy.health
-    if (enemy.health <= 0){
-        enemy.health = 0
+    if (enemy.health%2 >= .5){
+        //rounds up
+        enemy.health = (enemy.health - enemy.health%2) + 1
         enemyhealth = enemy.health
-        enemy.canHeal = false
+        if (enemy.health <= 0){
+            enemy.health = 0
+            enemyhealth = enemy.health
+            enemy.canHeal = false
+        }
+    }
+    else{
+        enemy.health = (enemy.health - enemy.health%2)
+        enemyhealth = enemy.health
+        if (enemy.health <= 0){
+            enemy.health = 0
+            enemyhealth = enemy.health
+            enemy.canHeal = false
+        }
     }
 };
 function eheal(){
@@ -236,7 +271,7 @@ function eheal(){
     // console.log(enemy.health)
 };
 function edefend(){
-    enemy.health = enemy.health - 4.5*(person.attack/(enemy.defence/2))
+    enemy.health = enemy.health - 4.5*((person.attack + added)/(enemy.defence/2))
     enemyhealth = enemy.health
     //health is whole number
     if (enemy.health%2 != 0) {
@@ -275,10 +310,10 @@ function hide(){
     result.style.display = 'block'
 }
 function sethealth(){
-    document.getElementById("healthplayer").value = person.health;
+    document.getElementById("healthplayer").value = person.health
     document.getElementById('phealth_count').innerHTML = person.health + "/" + person.maxHealth
     document.getElementById('healthplayer').max = person.maxHealth
-    document.getElementById("healthenemy").value = enemy.health;
+    document.getElementById("healthenemy").value = enemy.health
     document.getElementById('ehealth_count').innerHTML = enemy.health + "/" + enemy.maxHealth
     document.getElementById("healthenemy").max = enemy.maxHealth;
 
@@ -294,7 +329,7 @@ const game = () => {
         const defBtn = document.getElementById('defend');
         const forfeitBtn = document.getElementById('forfeit')
         const playerOptions = [ attkBtn, healBtn, defBtn, forfeitBtn]
-        const computerOptions = ['attack','attack', 'defend', 'heal']
+        const computerOptions = ['attack','attack','attack', 'defend', 'heal']
 
         playerOptions.forEach(option => {
             option.addEventListener('click', function(){
@@ -305,7 +340,7 @@ const game = () => {
                 moveTotal.innerText = `moves done: ${moves}`
 
                 //random computer choice
-                const compOption = Math.floor(Math.random() * 4)
+                const compOption = Math.floor(Math.random() * 5)
                 const compChoice = computerOptions[compOption]
 
                 //shows outcomes 
