@@ -50,18 +50,106 @@ characterOptions.forEach(option => {
         next()
     })
 })
+function alex_player(){
+    person.health = 500
+    person.maxHealth = 500
+    person.attack = person.attack/2
+    person.heal = 0 
+}
+function jorge_player(){
+    person.sethealth = 200
+    person.maxHealth = 200
+    person.attack = person.attack*2
+    person.heal = person.heal/2
+}
+function khoi_player(){
+    person.attack = person.attack/3
+    person.heal = person.heal * 5
+}
+function jian_player(){
+    person.defence = person.defence*2.5
+}
+function alex_enemy(){
+    enemy.health = 500
+    enemy.maxHealth = 500
+    enemy.attack = enemy.attack/2
+    enemy.heal = 0 
+}
+function jorge_enemy(){
+    enemy.sethealth = 200
+    enemy.maxHealth = 200
+    enemy.attack = enemy.attack*2
+    enemy.heal = enemy.heal/2
+}
+function khoi_enemy(){
+    enemy.attack = enemy.attack/3
+    enemy.heal = enemy.heal * 5
+}
+function jian_enemy(){
+    enemy.defence = enemy.defence*2.5
+}
 const remainingCharacter = (player,computer) =>{
-    playerCharacter = player
-    computerCharacter = computer
-    document.getElementById('playercharacter').innerText = playerCharacter
-    document.getElementById('enemycharacter').innerText = computerCharacter
+    document.getElementById('playercharacter').innerText = player
+    document.getElementById('enemycharacter').innerText = computer
+    if(player == 'Alex'){
+        alex_player()
+        if(computer == 'Jian'){
+            jian_enemy()
+        }
+        else if(computer == 'Jorge'){
+            jorge_enemy()
+        }
+        else{
+            khoi_enemy()
+        }
+        sethealth()
+    }
+    else if(player == 'Khoi'){
+        khoi_player()
+        if(computer == "Alex"){
+            alex_enemy()
+        }
+        else if(computer == "Jorge"){
+            jorge_enemy()
+        }
+        else{
+            jian_enemy()
+        }
+        sethealth()
+    }
+    else if(player == 'Jorge'){
+        jorge_player()
+        if(computer == 'Jian'){
+            jian_enemy()
+        }
+        else if(computer == 'Alex'){
+            alex_enemy()
+        }
+        else{
+            khoi_enemy()
+        }
+        sethealth()
+    }
+    else if(player == 'Jian'){
+        jian_player()
+        if(computer == 'Alex'){
+            alex_enemy()
+        }
+        else if(computer =='Jorge'){
+            jorge_enemy()
+        }
+        else{
+            khoi_enemy()
+        }
+        sethealth()
+    }
 }
 
 function showInConsole(){
     console.log(playerhealth + 'player')
     console.log(enemyhealth + 'enemy')
 }
-function pdamage(player){
+function pdamage(){
     person.health = person.health - enemy.attack
     playerhealth = person.health
     if (person.health <= 0){
@@ -179,16 +267,21 @@ function hide(){
     var player = document.getElementById('player')
     var menubar = document.getElementById('menubar')
     var moves = document.getElementById('moves')
+    var result = document.getElementById('result')
     enemy.style.display = 'none'
     player.style.display = 'none'
     menubar.style.display = 'none'
     moves.style.display = 'none'
+    result.style.display = 'block'
 }
 function sethealth(){
     document.getElementById("healthplayer").value = person.health;
-    document.getElementById('phealth_count').innerHTML = person.health + "/250"
+    document.getElementById('phealth_count').innerHTML = person.health + "/" + person.maxHealth
+    document.getElementById('healthplayer').max = person.maxHealth
     document.getElementById("healthenemy").value = enemy.health;
-    document.getElementById('ehealth_count').innerHTML = enemy.health + "/250"
+    document.getElementById('ehealth_count').innerHTML = enemy.health + "/" + enemy.maxHealth
+    document.getElementById("healthenemy").max = enemy.maxHealth;
+
 }
 //game function to play the game
 const game = () => {
@@ -285,22 +378,22 @@ const game = () => {
 
     //function decides winer 
     const winner = (playerhealth, computerhealth) =>{
-        const result = document.getElementById('result')
+        const resultTxt = document.getElementById('resultTxt')
         const reloadbtn = document.getElementById('reload')
 
         hide()
 
         if(playerhealth == 0 && computerhealth != 0){
-            result.innerText = 'you lost the game'
-            result.style.color = 'red'
+            resultTxt.innerHTML = 'you lost the game'
+            resultTxt.style.color = 'red'
         }
         else if( playerhealth != 0 && computerhealth == 0 ){
-            result.innerText = 'you won the game!'
-            result.style.color = 'green'
+            resultTxt.innerHTML = 'you won the game!'
+            resultTxt.style.color = 'green'
         }
         else{
-            result.innerText = 'Tie'
-            result.style.color = 'orange'
+            resultTxt.innerHTML = 'Tie'
+            resultTxt.style.color = 'orange'
         }
         reloadbtn.addEventListener('click', () => {
             window.location.reload();
