@@ -52,7 +52,7 @@ progress::-webkit-progress-bar {
     display:flex;
     height:100%;
 }
-.container{
+.charactercontainer{
     height:40vh;
     width:30vw;
     padding:15px
@@ -383,4 +383,8 @@ progress::-webkit-progress-bar {
     .grass{
         height:90%;
     }
+}
+
+body{
+    color:blue
 }
