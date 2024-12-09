@@ -1,390 +1,233 @@
 body{
-    margin:0px;
-    padding:0px;
-    height:100vh;
-}
-pre{
-    position:absolute;
-    padding:0px;
-    font-weight:bolder;
-    color:white;
-    left:25px;
-}
-
-progress{
-    width:80%;
-    height:50px;
-    background:none;
-
-}
-
-progress::-webkit-progress-value{
-    background: linear-gradient(to bottom right, rgb(1, 105, 1), rgb(5, 194, 5));
-    border-radius:25px 0px 10px 0px;
-    border:2px solid black;
-    border-bottom:5px solid rgb(255, 255, 255);
-
-}
-
-progress::-webkit-progress-bar {
-    background-image: linear-gradient(to bottom right, rgb(114, 6, 15), rgb(212, 58, 71));
-    border-radius:25px 0px 10px 0px;
-}
-@keyframes idle_anim{
-    0%{
-        transform:translate(-10px,0px);
-    }
-    25%{
-        transform:translate(0px,-10px);
-    }
-    50%{
-        transform:translate(10px,0px);
-    }
-    75%{
-        transform:translate(0px,-10px);
-    }
-    100%{
-        transform:translate(-10px,0px);
-    }
-}
-
-.halfbody{
     display:flex;
-    height:100%;
-}
-.charactercontainer{
-    height:40vh;
-    width:30vw;
-    padding:15px
-}
-.player_side{
-    height:100%;
-    width:50%;
-    display:flex;
-    justify-content:center;
-}
-#player{
-    position:absolute;
-    bottom:0px;
-    animation-name:idle_anim;
-    animation-duration:3s;
-    animation-iteration-count:infinite;
-}
-.enemy_side{
-    height:100%;
-    width:50%;
-    display:flex;
-    justify-content:center;
-}
-#enemy{
-    animation-name:idle_anim;
-    animation-duration:4s;
-    animation-iteration-count:infinite;
-}
-
-.menubar{
-    background-color:rgba(172, 172, 172, 0.897);
-    width:50vw;
-    height:30vh;
-    padding:10px;
-    position:absolute;
-    bottom:5vh;
-    right:3vw;
-    display:grid;
-    grid-template-columns: 50% 50%;
-    grid-row: auto auto;
-    grid-column-gap:1vh;
-    grid-row-gap:1vw;
-    justify-content:center;
-    border-radius:10px;
-}
-
-.menupos2{
-    position:absolute;
-}
-
-.action{
-    border:none;
-    border-radius:10px;
-    transition: all .5s;
-    font-size:25px;
-}
-
-.action:hover{
-    background-image:linear-gradient(to bottom left, rgb(73, 68, 68), rgb(27, 27, 27));
-    color:white;
-    transform: scale(1.1);
-}
-
-.count{
-    position:absolute;
-    font-weight: bolder;
-    font-size:20px;
-}
-
-#coverup{
-    height:100vh;
-    width:100%;
-    position:absolute;
-    background:rgba(0, 0, 0, 0.945);
-    top:0;
-    display:flex;
-    flex-direction: column;
+    align-items: flex-end;
     justify-content: center;
-}
-
-#characteroptions{
-    width:50%;
-    height:50%;
-    background:rgba(230, 230, 230, 0.905);
-    margin-right:auto;
-    margin-left:auto;
-    padding:10px;
-    border-radius:15px;
-    border:2px solid white;
-}
-
-.characters{
-    width:100%;
-    height:75%;
-    display:flex;
-    justify-content: space-evenly;
-}
-
-.characters button{
-    height:50%;
-    border-radius:10px;
-    transition: all 1s;
-    padding:0px;
-    border:none;
-}
-
-.charcard{
-    width:25%;
-    transition:all .5s;
+    min-height:100vh;
+    background-image:linear-gradient(to bottom,rgb(1, 18, 43),#000);
     overflow:hidden;
-    border-radius:10px;
-    border:5px solid black;
+    perspective: 1000px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.charcard button {
+.messagebox{
+    height:25%;
+    width:100%;
+    position:absolute;
+    top:0;
+    color:white;
+    font-size:3em;
+    text-align: center;
+    transition:.5s all;
+}
+.messagebox h1{
+    text-shadow: #00c3ff 1px 1px 50px ;
+}
+
+#messagebox2{
+    transform:translateY(-110%);
+    overflow:hidden;
+}
+
+button{
+    position:absolute;
+    bottom:15%;
+    border:2px solid white;
+    font-size:3em;
+    padding:1vh;
+    border-radius: 15px;
+    background: transparent;
+    color:white;
+    transition:.25s;
+}
+
+.vase{
+    position:absolute;
+    height:40%;
+    width:15%;
+    background-image:linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.527), rgba(116, 114, 114, 0.603));
+    bottom:5%;
+    border-radius:100% 100% 50px 50px;
+    overflow:hidden
+}
+
+.vase__water{
+    height:50%;
+    width:100%;
+    background-image: linear-gradient(to bottom, transparent 0%, rgb(90, 142, 177), rgb(62, 219, 219));
+    bottom:0;
+    position:absolute;
+}
+
+button:hover{
+    transform:scale(1.2);
+    border:2px solid rgb(39, 75, 190);
+    color:rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.486);
+    box-shadow: white 1px 1px 20px;
+}
+
+.flowers{
+    position:relative;
+    transform:scale(0.7)
+}
+
+.flower{
+    position:absolute;
+    bottom:10vmin;
+    transform-origin:bottom center;
+    z-index: 10;
+    --fl-speed:.8s;
+}
+
+.flower--1 .flower__line{
+    height:60vmin;
+    animation-delay: 0.3s;
+}
+
+.flower--1{
+    animation: sway 4s linear infinite
+}
+
+.flower__leafs{
     position:relative;
 }
-
-.charcard button{
-    width:100%;
-    height:100%
-}
-
-.charcard:hover{
-    width:60%
-}
-
-.charcard:hover button{
-    height:100%;
-}
-
-.card:hover {
-    border-radius: 0px;
-    transform:translate(0%,-113%);
-    height:100%;
-    width:100%;
-    color:white;
-}
-.card{
-    position: relative;
-    width:100%;
-    height:50%;
-    transition:all .5s;
-    transform:translate(50%,-275%);
-    font-size: 1.5em;
-    border-radius: 50%;
-    overflow: hidden;
-}
-.card1{
-    background:rgb(33, 24, 130);
-    color:rgb(32, 24, 130);
-}
-.card2{
-    background:rgb(110, 3, 110);
-    color:rgb(110, 3, 110);
-}
-.card3{
-    background:rgb(206, 143, 188);
-    color:rgb(206, 143, 188);
-}
-.card4{
-    background:rgb(5, 167, 5);
-    color:rgb(5, 167, 5);
-}
-
-.characters button img{
-    filter:grayscale(75%);
-    height:100%;
-    width:100%;   
-    transition: all 1s;
-    border-radius: 5px;
-}
-
-/* .characters button:hover{
-    height:100%;
-} */
-
-/* .characters button:hover img{
-    filter:grayscale(5%);
-} */
-
-/* .characters button:hover .card{
-    transform:translate(0%,-100%);
-    border-radius:0px;
-    color:white;
-}
-    */
-.card1:hover {
-    background:rgba(33, 24, 130, 0.749);
-}
-.card2:hover {
-    background:rgba(110, 3, 110, 0.749);
-}
-.card3:hover {
-    background:rgba(206, 143, 188, 0.749);
-}
-.card4:hover {
-    background:rgba(5, 167, 5, 0.749);
-}
-
-.characterName{
-    background:linear-gradient(to left, rgb(241, 233, 233), rgb(145, 135, 135));
-    width:50%;
-    height:35px;
-    border-radius: 0px 0px 15px 0px;
-    color:white;
-    font-weight:bolder;
-    font-size:25px;
-    padding-left:20px;
-    overflow:hidden;
-    border:2px solid rgba(0, 0, 0, 0.733)
-}
-
-#result{
-    position:absolute;
-    left:25%;
-    top:25%;
-    background:white;
-    height:50%;
-    width:50%;
-    display:grid;
-    justify-content: center;
-    font-size:5vw;
-    padding:15px;
-    display:none;
-}
-
-#resultTxt{
-    margin:0px;   
-}
-
-#reload{
-    border:none;
-    width:100%;
-    height:50px;
-    font-size: 25px;
-    font-weight:bolder;
-    border-radius: 10px;
-}
-
-#reload:hover{
-    background:rgb(209, 204, 204);
-    color:white;
-}
-
-.endoption{
-    width:100%;
-}
-
-.shadow{
-    height:10%;
-    width:90%;
-    background-image:linear-gradient(to right, rgb(185, 171, 171), rgb(0, 0, 0) ) ;
-    border-radius: 50%;
-    position:absolute;
-    bottom:10px;
-    
-}
-
-.gamebackground{
-    position:absolute;
-    height:100vh;
-    width:100%;
-    background:lightblue;
-}
-
-.grass{
-    height:70vh;
-    width:100%;
-    background-image:linear-gradient(to top right,rgb(46, 100, 46), rgb(43, 194, 43));
+.flower_leaf{
     position:absolute;
     bottom:0;
+    left:50%;
+    width:8vmin;
+    height: 11vmin;
+    border-radius: 51% 49% 47% 53%/44% 45% 55% 69%;
+    background-color: rgb(0, 162, 255);
+    background-image: linear-gradient(to top, rgb(48, 73, 126), rgb(98, 155, 221));
+    transform-origin: bottom center;
+    opacity: 0.9;
+    box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
 }
 
-@media only screen and (max-width: 480px){
-    .halfbody{
-        display:flex;
-        height:75%;
-    }
-    .menubar{
-        width:90%;
-    }
-    .container{
-        height:20vh
-    }
-    #player{
-        position:absolute;
-        bottom:50%
-    }
-    progress{
-        width:100%;
-        height:25px;
-        background:none;
-    }
-    pre{
-        position:absolute;
-        padding:0px;
-        font-weight:bolder;
-        color:white;
-        left:40px;
-        top:6px;
-    }
-    .characterName{
-        width:40%;
-        height:20px;
-        font-size:15px;
-        padding-left:20px;
-    }
-    .characters{
-        display:grid;
-        grid-template-columns: 50% 50%;
-    }
-    .charcard{
-        width:90%
-    }
-    .charcard:hover{
-        width:95%
-    }
-    .card{
-        height:100%;
-        width:100%;
-        transform:translate(50%,-200%);
-        font-size: 1em;
-    }
-    .card:hover{
-        transform:translateY(-129%)
-    }
-    .grass{
-        height:90%;
-    }
+.flower__line__leaf{
+    --w:7vmin;
+    --h: calc(var(--w) + 2vmin);
+    position:absolute;
+    top:20%;
+    left:90%;
+    width:var(--w);
+    height:var(--h);
+    border-top-right-radius: var(--h);
+    border-bottom-left-radius: var(--h);
+    background-image: linear-gradient(to top, rgba(20, 117, 122, 0.4), #39c6d6);
+}
+.flower__line__leaf--1{
+    transform:rotate(70deg) rotateY(30deg)
+}
+.flower__line__leaf--2{
+    top:45%;
+    transform:rotate(70deg) rotateY(30deg)
+}
+.flower__line__leaf--3, .flower__line__leaf--4, .flower__line__leaf--6 {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: var(--h);
+    border-bottom-right-radius: var(--h);
+    left: -460%;
+    top: 12%;
+    transform: rotate(-70deg) rotateY(30deg) translate(-50%, -12%);
+}
+.flower__line__leaf--4 {
+    top: 40%;
+}
+.flower__line__leaf--5 {
+    top: 0;
+    transform-origin: left;
+    transform: rotate(70deg) rotateY(30deg) scale(0.6);
+}
+.flower__line__leaf--6 {
+    top: -2%;
+    left: -450%;
+    transform-origin: right;
+    transform: rotate(-70deg) rotateY(30deg) scale(0.6);
+}
+.flower__leaf--1{
+    transform:translate(-40%, 10%) rotateY(60deg) rotateX(-30deg);
+    height:15vmin;
+    width:15vmin;
+    
+}
+.flower__leaf--2{
+    transform:translate(-50%, -5%) rotateX(30deg);
+    width:15vmin;
+    height:12vmin;
+}
+.flower__leaf--3{
+    transform:translate(-60%, 10%) rotateY(40deg) rotateX(30deg);
+    height:15vmin;
+    width:12vmin;
+}
+.flower__leaf--4{
+    width:12vmin;
+    height:12vmin;
+    transform-origin: bottom left;
+    border-radius: 4vmin 10vmin 4vmin 4vmin;
+    transform: translate(0%, 18%) rotateX(45deg) rotate(-45deg);
+    background-image:linear-gradient(to top, rgb(48, 73, 126), rgb(98, 155, 221));
+    z-index: 1;
+    opacity: 0.8;
+}
+.flower__leaf--5{
+    height:13vmin;
+    width:8vmin;
+    transform:rotate(60deg) translate(-35%, 30%);
+    transform-origin:bottom;
+}
+.flower__leaf--6{
+    height:15vmin;
+    width:8vmin;
+    transform:rotate(-55deg) translate(-20%, -10%);
+    transform-origin: bottom;
+
+}
+.flower__line{
+    height:10vmin;
+    width:1vmin;
+    background-image: linear-gradient(to left, rgba(0,0,0,0.2), transparent, rgba(255, 255, 255, .2)), linear-gradient(to top, transparent 10%, rgb(19, 75, 36), rgb(36, 182, 114));
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+}
+.flower__line .flower__line--1{
+    transform:translate(0%, -100%) rotate(25deg);
+    transform-origin: bottom;
+    height:25vmin;
+    background-image: linear-gradient(to top, transparent 10%, rgb(19, 75, 36), rgb(36, 182, 114));
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+}
+.flower__line.flower__line--1--1{
+    transform:translate(0%, -100%) rotate(25deg);
+    transform-origin: bottom;
+    height:25vmin;
+    background-image: linear-gradient(to top, transparent 10%, rgb(19, 75, 36), rgb(36, 182, 114));
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+}
+.flower__line .flower__line--2{
+    transform:translate(0%, -175%) rotate(25deg);
+    transform-origin: bottom;
+    height:15vmin;
+    background-image: linear-gradient(to top, transparent 10%, rgb(19, 75, 36), rgb(36, 182, 114));
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
 }
 
-body{
-    color:blue
+@keyframes sway{
+    0%{
+        transform:rotate(0deg)
+    }
+    25%{
+        transform:rotate(2deg)
+    }
+    50%{
+        transform:rotate(0deg)
+    }
+    75%{
+        transform:rotate(-2deg)
+    }
+    100%{
+        transform:rotate(0deg)
+    }
 }

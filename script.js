@@ -1,448 +1,118 @@
-person = {
-    maxHealth:250,
-    health:250,
-    name:"Alex",
-    defence:50,
-    heal:10,
-    attack:25,
-    canHeal:true
-};
+var m1 = "I love you"
+var m2 = "You are my world"
+var m3 = "I believe that you can do anything"
+var m4 = "There could be a thousand stars in the sky but my eyes will find a way to see only you"
+var m5 = "To me, you're all i need in this world"
+var m6 = "Im always cheering you on, no matter what"
+var m7 = "Girl, you are sweeter than sugar"
+var m8 = "Theres a million fish in the sea, but you're the one I want "
+var m9 = "I will always be here to listen to you"
+var m10 = "When the world seems darkest, you are my light"
+var m11 = "Nice boobies"
+var m12 = "You are the prettiest girl in the world"
+var m13 = "Im thankful that you are in my life"
+var m14 = "You make me the happiest in the entire world"
+var m15 = "I love seeing you emberassed"
+var m16 = "Your laugh is my favourite sound"
+var m17 = "I would follow you anywhere"
+var m18 = "All i want for christmas is you"
+var m19 = "You are always on my mind"
+var m20 = "Everthing feels right when Im with you"
+var m21 = "I never knew what love was until I met you"
+var m22 = "I love you today. I love you tomorrow. And I'll keep loving you every day after that, too"
+var m23 = "Of course, I still love you"
+var m24 = "I miss you every second we are apart"
+var m25 = "I wont ever let you go"
+var m26 = "You are beautiful just the way you are"
+var m27 = "I'm the luckiest alive to be able to call you mine"
+var m28 = "You're the peanut butter to my jelly"
+var m29 = "I can never get enough of you"
+var m30 = "no, im not tired of you and never will be"
+var m31 = "I will always be in your life. even if I'm not with you, Im only a text away"
+var m32 = "You're cute, can i keep you forver?"
+var m33 = "You make my days better"
+var m34 = "I would do anything for you"
+var m35 = "I would love you if you were a worm"
+var m36 = "The best part of me is you"
+var m37 = "I want my future to be with you"
+var m38 = "You're my best friend"
+var m39 = "I wish I could be better because you deserve the world"
+var m40 = "sweet dreams, I hope that i am in them"
+var v1 = "You're hotter than lava"
+var v2 = "I would love it if you're my wife"
+var v3 = "I really want to kiss you right now"
+var v4 = "sending kisses through the screen"
+var v5 = "you are my sun"
+var v6 = "you are my moon"
+var v7 = 'you are my star'
+var v8 = "you're not just my sun, moon and star. you're my whole universe"
+var v9 = "My face hurts from smiling so much when im with you"
+var v10 = "I love it when you cuddle me"
+var v11 = "I'll always hold you when you need it"
+var v12 = "You've answered my prayers, and I'm not even religious!"
+var v13 = "its a blessing to have you in my life"
+var v14 = "I can't see you but I know that you're looking sexy"
+var v15 = "It's difficult to put into words just how much i love you"
+var v16= "No one will ever be like you"
+var v17 = "you are irreplacable"
+var v18 = "Everything about you captivates me"
+var v19 = "your kisses make me melt"
+var v20 = "Thank you for everthing you have done for me"
+var v21 = "i hope your day is as nice as your smile"
+var v22 = "How do you alwyas look cute?"
+var v23 = "Let's make so many memories together"
+var v24 = "hey *with rizz*"
+var v25 = "I never thought angels existed until you showed up"
+var v26 = "I feel at ease whenever im with you"
+var v27 = "you are such a thoughtful girlfriend"
+var v28 = "Thank you for always being there for me"
+var v29 = "You are perfect, your personality, body, and the perfect one for me"
+var v30 = "P.S I love you"
+var v31 ="through good times and bad, I will always love and support you "
+var v32 = "Your weirdness is my favourite thing"
+var v33 = "Wherever you go, I wont be far to follow"
+var v34 = "I'd rather be me with you"
+var v35 = "I love you, inside and out"
+var v36 = "Sometimes it feels like I'm dreaming, but then I realize you are real!"
+var v37 = '"And she became his wife, and he loved her." -Genesis 24:67'
+var v38 = "Loving you is the best thing I have ever done"
+var v39 = "You make every moment a memory that I will cherish forever"
+var v40 = "I run towards you because you are my safe place"
+var currentm = 1
 
-enemy = {
-    maxHealth:250,
-    health:250,
-    name:"Jian",
-    defence:50,
-    heal:10,
-    attack:25,
-    canHeal:true,
-};
 
-function next(){
-    document.getElementById('coverup').style.display ='none'
-}
-//count moves
-let moves = 0;
+const random_list = [m1, m2, m3, m4, m5, m6, m7, m8, m9,m10,m11,m12,m13,m14,m15,m16,m17,m18,m19,m20,m21,m22,m23,m24,m25,m26,m27,m28,m29,m30,m31,m32,m33,m34,m35,m36,m37,m38,m39,m40]
+const random_list2 = [v1, v2, v3, v4, v5, v6, v7, v8, v9,v10,v11,v12,v13,v14,v15,v16,v17,v18,v19,v20,v21,v22,v23,v24,v25,v26,v27,v28,v29,v30,v31,v32,v33,v34,v35,v36,v37,v38,v39,v40]
 
-
-//character chosing function
-var playerCharacter = ''
-var computerCharacter = ''
-const JorgeBtn = document.getElementById('Jorge');
-const AlexBtn = document.getElementById('Alex');
-const KhoiBtn = document.getElementById('Khoi');
-const JianBtn = document.getElementById('Jian')
-const characterOptions = [JorgeBtn, AlexBtn, KhoiBtn, JianBtn]
-const computerCharacters = ['Jorge', 'Alex', 'Khoi', 'Jian']
-console.log(characterOptions)
-characterOptions.forEach(option => {
-    option.addEventListener('click', function(){
-
-        //random computer choice
-        const compCharop = Math.floor(Math.random() * 4)
-        var compCharChoice = computerCharacters[compCharop]
-        while(this.innerText == compCharChoice){
-            const compCharop = Math.floor(Math.random() * 4)
-            var compCharChoice = computerCharacters[compCharop]
-        }
-
-        //find which characters computer can use
-        console.log(characterOptions)
-        remainingCharacter(this.innerText,compCharChoice)
-        next()
-    })
-})
-function alex_player(){
-    person.health = 500
-    person.maxHealth = 500
-    person.attack = person.attack/2
-    person.heal = 0 
-}
-function jorge_player(){
-    person.health = 100
-    person.maxHealth = 100
-    person.attack = person.attack*1.5
-    person.heal = person.heal/2
-}
-function khoi_player(){
-    player.health = 200
-    player.maxHealth = 200
-    person.attack = person.attack/3
-    person.heal = person.heal * 5
-}
-function jian_player(){
-    person.defence = person.defence*2.5
-}
-function alex_enemy(){
-    enemy.health = 500
-    enemy.maxHealth = 500
-    enemy.attack = enemy.attack/2
-    enemy.heal = 0 
-}
-function jorge_enemy(){
-    enemy.health = 100
-    enemy.maxHealth = 100
-    enemy.attack = enemy.attack*2
-    enemy.heal = enemy.heal/2
-}
-function khoi_enemy(){
-    enemy.health = 200
-    enemy.maxHealth = 200
-    enemy.attack = enemy.attack/3
-    enemy.heal = enemy.heal * 5
-}
-function jian_enemy(){
-    enemy.defence = enemy.defence*2.5
-}
-const remainingCharacter = (player,computer) =>{
-    document.getElementById('playercharacter').innerText = player
-    document.getElementById('enemycharacter').innerText = computer
-    if(player == 'Alex'){
-        alex_player()
-        if(computer == 'Jian'){
-            jian_enemy()
-        }
-        else if(computer == 'Jorge'){
-            jorge_enemy()
-        }
-        else{
-            khoi_enemy()
-        }
-        sethealth()
-    }
-    else if(player == 'Khoi'){
-        khoi_player()
-        if(computer == "Alex"){
-            alex_enemy()
-        }
-        else if(computer == "Jorge"){
-            jorge_enemy()
-        }
-        else{
-            jian_enemy()
-        }
-        sethealth()
-    }
-    else if(player == 'Jorge'){
-        jorge_player()
-        if(computer == 'Jian'){
-            jian_enemy()
-        }
-        else if(computer == 'Alex'){
-            alex_enemy()
-        }
-        else{
-            khoi_enemy()
-        }
-        sethealth()
-    }
-    else if(player == 'Jian'){
-        jian_player()
-        if(computer == 'Alex'){
-            alex_enemy()
-        }
-        else if(computer =='Jorge'){
-            jorge_enemy()
-        }
-        else{
-            khoi_enemy()
-        }
-        sethealth()
-    }
-}
-
-function showInConsole(){
-    console.log(playerhealth + 'player')
-    console.log(enemyhealth + 'enemy')
-}
-function pdamage(){
-    person.health = person.health - (enemy.attack )
-    playerhealth = person.health
-    //health is whole number
-    if (person.health%2 != 0) {
-        if (person.health%2 >= .5){
-            //rounds up
-            person.health = (person.health - person.health%2) + 1
-            playerhealth = person.health
-            if (person.health <= 0){
-                person.health = 0
-                playerhealth = person.health
-                person.canHeal = false
-            }
-        }
-        else{
-            person.health = (person.health - person.health%2)
-            playerhealth = person.health
-            if (person.health <= 0){
-                person.health = 0
-                playerhealth = person.health
-                person.canHeal = false
-            }
-        }
-    }
-};
-function pheal(){
-    if(person.canHeal){
-        person.health = person.health + person.heal
-        playerhealth = person.health
-        if (person.health <= 0){
-            person.health = 0
-            playerhealth = person.health
-            person.canHeal = false
-        }
-        // else if (person.health >= 0 && person.health <= 250){
-        //     person.health = person.health + person.heal
-        // } failed code/would overheal before setting to max health
-        if (person.health > person.maxHealth){
-            person.health = person.maxHealth
-            playerhealth = person.health
-        }
-        // console.log(person.health)
-    }
+function randomessage(){
     
-    
-};
-function pdefend(){
-    person.health = person.health - 4.5*((enemy.attack)/(person.defence/2))
-    //health is whole number
-    if (person.health%2 != 0) {
-        if (person.health%2 >= .5){
-            //rounds up
-            person.health = (person.health - person.health%2) + 1
-            playerhealth = person.health
-            if (person.health <= 0){
-                person.health = 0
-                playerhealth = person.health
-                person.canHeal = false
-            }
-        }
-        else{
-            person.health = (person.health - person.health%2)
-            playerhealth = person.health
-            if (person.health <= 0){
-                person.health = 0
-                playerhealth = person.health
-                person.canHeal = false
-            }
-        }
-    }
-}
-function forfeit(){
-    person.health = 0
-    playerhealth = person.health
-    person.canHeal = false
-    // console.log(person.health)
-}
-function edamage(){
-    enemy.health = enemy.health - (person.attack )
-    enemyhealth = enemy.health
-    if (enemy.health%2 >= .5){
-        //rounds up
-        enemy.health = (enemy.health - enemy.health%2) + 1
-        enemyhealth = enemy.health
-        if (enemy.health <= 0){
-            enemy.health = 0
-            enemyhealth = enemy.health
-            enemy.canHeal = false
-        }
+    if(currentm == 1){
+        currentm = 0
+        document.getElementById('messagebox1').style.transform = 'translateY(-110%)'
+        document.getElementById('messagebox1').style.overflow = 'hidden'
+        document.getElementById('messagebox2').style.transform = 'translateY(0%)'
+        document.getElementById('messagebox2').style.overflow = 'visible'
     }
     else{
-        enemy.health = (enemy.health - enemy.health%2)
-        enemyhealth = enemy.health
-        if (enemy.health <= 0){
-            enemy.health = 0
-            enemyhealth = enemy.health
-            enemy.canHeal = false
-        }
+        currentm = 1
+        document.getElementById('messagebox1').style.transform = 'translateY(0%)'
+        document.getElementById('messagebox1').style.overflow = 'visible'
+        document.getElementById('messagebox2').style.transform = 'translateY(-110%)'
+        document.getElementById('messagebox2').style.overflow = 'hidden'
     }
-};
-function eheal(){
-    if(enemy.canHeal){
-        enemy.health = enemy.health + enemy.heal
-        enemyhealth = enemy.health
-        if (enemy.health <= 0){
-            enemy.health = 0
-            enemyhealth = enemy.health
-            enemy.canHeal = false
-        }
-        else if (enemy.health > enemy.maxHealth){
-            enemy.health = enemy.maxHealth
-            enemyhealth = enemy.health
-        } 
-    }
-    // console.log(enemy.health)
-};
-function edefend(){
-    enemy.health = enemy.health - 4.5*((person.attack )/(enemy.defence/2))
-    enemyhealth = enemy.health
-    //health is whole number
-    if (enemy.health%2 != 0) {
-        if (enemy.health%2 >= .5){
-            //rounds up
-            enemy.health = (enemy.health - enemy.health%2) + 1
-            enemyhealth = enemy.health
-            if (enemy.health <= 0){
-                enemy.health = 0
-                enemyhealth = enemy.health
-                enemy.canHeal = false
-            }
-        }
-        else{
-            enemy.health = (enemy.health - enemy.health%2)
-            enemyhealth = enemy.health
-            if (enemy.health <= 0){
-                enemy.health = 0
-                enemyhealth = enemy.health
-                enemy.canHeal = false
-            }
-        }
-    }
-    // console.log(enemy.health)
-}
-function hide(){
-    var enemy = document.getElementById('enemy')
-    var player = document.getElementById('player')
-    var menubar = document.getElementById('menubar')
-    var moves = document.getElementById('moves')
-    var result = document.getElementById('result')
-    enemy.style.display = 'none'
-    player.style.display = 'none'
-    menubar.style.display = 'none'
-    moves.style.display = 'none'
-    result.style.display = 'block'
-}
-function sethealth(){
-    document.getElementById("healthplayer").value = person.health;
-    document.getElementById('phealth_count').innerHTML = person.health + "/" + person.maxHealth
-    document.getElementById('healthplayer').max = person.maxHealth
-    document.getElementById("healthenemy").value = enemy.health;
-    document.getElementById('ehealth_count').innerHTML = enemy.health + "/" + enemy.maxHealth
-    document.getElementById("healthenemy").max = enemy.maxHealth;
-
-}
-//game function to play the game
-const game = () => {
-    
-    const check = document.getElementById('check')
-    //function to play game
-    const playWebmon = () =>{
-        const attkBtn = document.getElementById('attack');
-        const healBtn = document.getElementById('heal');
-        const defBtn = document.getElementById('defend');
-        const forfeitBtn = document.getElementById('forfeit')
-        const playerOptions = [ attkBtn, healBtn, defBtn, forfeitBtn]
-        const computerOptions = ['attack','attack','attack', 'defend', 'heal']
-
-        playerOptions.forEach(option => {
-            option.addEventListener('click', function(){
-
-                //displays how many moves it has taken
-                const moveTotal = document.getElementById('moves')
-                moves ++ 
-                moveTotal.innerText = `moves done: ${moves}`
-
-                //random computer choice
-                const compOption = Math.floor(Math.random() * 5)
-                const compChoice = computerOptions[compOption]
-
-                //shows outcomes 
-                outcome(this.innerText, compChoice)
-
-                //calling gameover 
-                if (playerhealth == 0 || enemyhealth == 0){
-                    winner(playerhealth, enemyhealth)
-                }
-            });
-        })
-    }
-
-    const outcome = (player, computer) =>{
-        player = player.toLowerCase();
-        computer = computer.toLowerCase();
-        if (player === computer){
-            if(player == 'attack'){
-                pdamage();
-                edamage()
-                sethealth()
-            }
-            else if (player == 'defend'){
-                //pass 
-            }
-            else{
-                eheal()
-                pheal()
-                sethealth()
-            } 
-        }
-        else if(player == 'attack'){
-            if (computer == 'defend'){
-                edefend()
-                sethealth()
-            }
-            else{
-                edamage()
-                eheal()
-                sethealth()
-            }
-        }
-        else if(player == 'defend'){
-            if(computer == 'attack'){
-                pdefend()
-                sethealth()
-            }
-            else{
-                eheal()
-                sethealth()
-            }
-        }
-        else if(player == 'heal'){
-            if (computer =='attack'){
-                pdamage()
-                pheal()
-                sethealth()
-            }
-            else{
-                pheal()
-                sethealth()
-            }
-        }
-        else if(player == 'forfeit'){
-            forfeit()
-            sethealth()
-        }
-        showInConsole()
-    }
-
-    //function decides winer 
-    const winner = (playerhealth, computerhealth) =>{
-        const resultTxt = document.getElementById('resultTxt')
-        const reloadbtn = document.getElementById('reload')
-
-        hide()
-
-        if(playerhealth == 0 && computerhealth != 0){
-            resultTxt.innerHTML = 'you lost the game'
-            resultTxt.style.color = 'red'
-        }
-        else if( playerhealth != 0 && computerhealth == 0 ){
-            resultTxt.innerHTML = 'you won the game!'
-            resultTxt.style.color = 'green'
-        }
-        else{
-            resultTxt.innerHTML = 'Tie'
-            resultTxt.style.color = 'orange'
-        }
-        reloadbtn.addEventListener('click', () => {
-            window.location.reload();
-        })
-    }
-
-    //calling playgame funciton
-    playWebmon()
+    setTimeout(() => changem(), 500)
 }
 
-//calling game function
-game()
-
-var playerhealth = person.health
-var enemyhealth = enemy.health
+function changem(){
+    const random =  Math.floor(Math.random()* random_list.length)
+    var mpopup1 = random_list2[random]
+    var mpopup2 = random_list[random]
+    if(currentm == 1){
+        
+        document.getElementById('message2').innerHTML = mpopup2
+    }
+    else{
+        
+        document.getElementById('message').innerHTML = mpopup1
+    }
+}
